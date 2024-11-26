@@ -5,7 +5,6 @@ import numpy as np
 import os
 from PIL import Image
 
-
 from tensorflow.keras.models import load_model
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 #----------------------------------------------#
@@ -39,7 +38,7 @@ def upload_image(uploaded_file):
 # settind : 최적의 model 불러오고, class_name과 class_explain 선언
 def setting():
     # 모델 로드 및 예측
-    filepath = 'best_cifar10_mobilenetv2_128_fine_tuned.keras'  # 요거는 예진님한테 여쭙고 이름 바꾸기 요청
+    filepath = 'best_cloud_mobilenet.keras'
     model = load_model(filepath)
     class_name="['난층운','적란운'...]" ## sample folder에서
     class_explain="['난층운의 특징',...]"
@@ -54,5 +53,21 @@ def test_accuracy(uploaded_file):
     pred = np.argmax(pred_proba)
     pred_label = class_name[pred]
     pred_description = class_explain[pred]
+    images_name=class_sample_image(pred_label)
 
-    return pred, pred_label, pred_description
+    return pred, pred_label, pred_description,images_name
+#----------------------------------------------#
+# class_sample_image : 해당 구름 sample 이미지!
+def class_sample_image(pred_label):
+    # 근데 이게 영어로 들어와야되는데 저거는 난층운 ~ 요따구란 말이지
+    # 그래서 여기 수정 필요함 일단 이렇게
+    filepath = f'./cloud_img/sample_cloud_img/{pred_label}'
+    image_names = []
+    try:
+        for file_name in os.listdir(filepath):
+            if file_name.lower().endswith(('.jpg', '.jpeg', '.png')):
+                image_names.append(file_name)
+    except FileNotFoundError:
+        print(f"Error: Directory '{filepath}' does not exist.")
+    return image_names
+
