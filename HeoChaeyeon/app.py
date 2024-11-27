@@ -7,7 +7,7 @@ print(type(uploaded_file))
 
 if uploaded_file is not None:
     # pred = 예측
-    pred,pred_label,pred_explanation,images_name=module.test_accuracy(uploaded_file)
+    pred_max_proba,pred_class_name,pred_explanation,images_name=module.test_accuracy(uploaded_file)
     
     st.write("파일 이름:", uploaded_file.name)
     st.write("파일 타입:", uploaded_file.type)
@@ -16,5 +16,5 @@ if uploaded_file is not None:
     st.image(uploaded_file, caption="업로드 이미지")
 
     
-    st.success(f"위 사진은 {pred_label} 일 확률이 {pred_proba[0][pred]:.4f} 입니다. 특징은 ........입니다.")
+    st.success(f"위 사진은 {pred_class_name} 일 확률이 {pred_max_proba:.4f} 입니다. 특징은 ........입니다.")
 
