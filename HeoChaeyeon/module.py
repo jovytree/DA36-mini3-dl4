@@ -42,7 +42,7 @@ def setting():
     # 모델 로드 및 예측
     filepath = 'best_cloud_mobilenet_2.keras'
     model = load_model(filepath)
-    class_name=[["Ac","고적운"],["As","고층운 "],["Cb","적란운 "],["Cc","권적운"],["Ci","권운"],["Cs","권층운"],["Ct","비행운"],["Cu","적운"],["Ns","난층운 "],["Sc","층적운"],["St","-"]]
+    class_name=[["Ac","고적운"],["As","고층운 "],["Cb","적란운 "],["Cc","권적운"],["Ci","권운"],["Cs","권층운"],["Ct","비행운"],["Cu","적운"],["Ns","난층운 "],["Sc","층적운"]]
     class_explain="['난층운의 특징',...]"
     return model,class_name,class_explain
 #----------------------------------------------#
