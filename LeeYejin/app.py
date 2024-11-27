@@ -10,7 +10,7 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
 
 # 저장 경로 설정
-SAVE_DIR = "upload"
+SAVE_DIR = "../upload"
 os.makedirs(SAVE_DIR, exist_ok=True)  # 해당폴더가 있는경우 오류발생 억제
 
 st.title("구름 이미지 분류")
@@ -27,7 +27,7 @@ if uploaded_file is not None:
     st.image(uploaded_file, caption="업로드 이미지")
 
     # 모델 로드 및 예측
-    filepath = 'best_cloud_mobilenet.keras'
+    filepath = '../best_cloud_mobilenet.keras'
     model = load_model(filepath)
     print(model)
 
