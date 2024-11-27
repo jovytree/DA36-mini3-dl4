@@ -46,22 +46,27 @@ def setting():
 #----------------------------------------------#
 # test_accuracy : 웹에 업로드된 사진 분류 진행!
 def test_accuracy(uploaded_file):
+
+    class_name=[["Ac",""]
+    
     batch_image=upload_image(uploaded_file)
     model, class_name, class_explain = setting()
-    pred_proba = model.predict(batch_image)
+    pred_proba = model.predict(batch_image) # 전체 클래스에 대해서
 
     pred = np.argmax(pred_proba)
-    pred_label = class_name[pred]
-    pred_description = class_explain[pred]
-    images_name=class_sample_image(pred_label)
+    pred_max_proba=pred_proba[pred] # 최대 확률 값 return
+    pred_label=class_name[pred][0]
+    pred_class_name = class_name[pred][1] # 최대 확률 값을 가진 class의 이름(ex.난층운) return 
+    pred_explanation= class_explain[pred] # 해당 class의 설명 return (ex.해당 구름은 ~~뒤에 비가 옵니다)
+    images_name=class_sample_image(pred_label) # 화면에 표시될 sample image의 주소
 
-    return pred, pred_label, pred_description,images_name
+    return pred_max_proba, pred_class_name, pred_explanation, images_name
 #----------------------------------------------#
 # class_sample_image : 해당 구름 sample 이미지!
 def class_sample_image(pred_label):
     # 근데 이게 영어로 들어와야되는데 저거는 난층운 ~ 요따구란 말이지
     # 그래서 여기 수정 필요함 일단 이렇게
-    filepath = f'./cloud_img/sample_cloud_img/{pred_label}'
+    filepath = f'./show_image/{pred_label}'
     image_names = []
     try:
         for file_name in os.listdir(filepath):
