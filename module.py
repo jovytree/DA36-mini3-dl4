@@ -40,7 +40,7 @@ def upload_image(uploaded_file):
 # settind : 최적의 model 불러오고, class_name과 class_explain 선언
 def setting():
     # 모델 로드 및 예측
-    filepath = 'best_cloud_mobilenet_2.keras'
+    filepath = './HeoChaeyeon/model/EfficientNet_class10_fourth_1_0.0.7703.keras'
     model = load_model(filepath)
     class_name=[["Ac","고적운"],["As","고층운 "],["Cb","적란운 "],["Cc","권적운"],["Ci","권운"],["Cs","권층운"],["Ct","비행운"],["Cu","적운"],["Ns","난층운 "],["Sc","층적운"]]
     class_explain=[
@@ -64,6 +64,7 @@ def test_accuracy(uploaded_file):
     model, class_name, class_explain = setting()
     pred_proba = model.predict(batch_image) # 전체 클래스에 대해서
     pred_proba=pred_proba[0]
+    print(pred_proba)
     pred = np.argmax(pred_proba)
     pred_max_proba=pred_proba[pred] # 최대 확률 값 return
     pred_label=class_name[pred][0]
