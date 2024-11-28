@@ -16,6 +16,10 @@ if st.session_state.page == 'home':
 
 # 구름 분류 페이지
 elif st.session_state.page == 'cloud':
+    # '홈으로 돌아가기' 버튼
+    if st.button('홈으로 돌아가기', icon='🏠', use_container_width=True):
+        st.session_state.page = 'home'  # 버튼 클릭 시 홈 페이지로 이동
+
     st.image("./png/너굴.png", use_container_width=False)
     texts = [
         "🦝너굴🦝 : **어서와, 구리!**",
@@ -53,6 +57,3 @@ elif st.session_state.page == 'cloud':
             st.write(text)  # 텍스트 출력
             time.sleep(2)  # 2초 지연
 
-    # '홈으로 돌아가기' 버튼
-    if st.button('홈으로 돌아가기', icon='🏠', use_container_width=True):
-        st.session_state.page = 'home'  # 버튼 클릭 시 홈 페이지로 이동
