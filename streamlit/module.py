@@ -5,7 +5,7 @@ import os
 from PIL import Image
 
 from tensorflow.keras.models import load_model
-from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+from tensorflow.keras.applications.efficientnet import preprocess_input
 
 import tensorflow as tf
 print(tf.__version__)
@@ -13,6 +13,7 @@ print(tf.__version__)
 
 filepath = './EfficientNet_class10_final.keras'
 model = load_model(filepath)
+# print(model.summary())
 #----------------------------------------------#
 # web에 올라온 image
 def upload_image(uploaded_file):
@@ -25,6 +26,7 @@ def upload_image(uploaded_file):
     # uploaded_file은 UploadedFile 객체이다. # > app.py에서 선언하고 함수 호출 시에 넘겨 줘야함
     IMAGE_SIZE = 224
     image = Image.open(uploaded_file)  # <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=1500x1500 at 0x198B95F8250>
+
     image_np = np.array(image)
     # tf.image.resize 사용
     resized_image = tf.image.resize(image_np, (IMAGE_SIZE, IMAGE_SIZE))
