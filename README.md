@@ -64,10 +64,16 @@
 ![EfficientNet](README_img/EfficientNetPredict.png)
 
 
+**최종 선택 모델**
+![최종 선택 모델](README_img/final.png)
 
 
 -----
 ### **시연 영상**
+![thumbnail](README_img/thumbnail.png)
+
+
+[허채연의 채널에서 보기](https://youtu.be/jdU_7EJn72U)
 
 
 
