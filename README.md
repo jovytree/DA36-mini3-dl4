@@ -1,6 +1,3 @@
-
-# SkyMood's README
-=======
 # SkyMood | CNN 기반 구름 이미지 분류
 
 ![대문 이미지](README_img/front_img.png)
