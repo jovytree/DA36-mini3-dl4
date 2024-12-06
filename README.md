@@ -47,7 +47,7 @@
    - train_accuracy: 0.9740, train_loss: 0.0820
    - val_accuracy: 0.6599 , val_loss: 1.5845
    - test_accuracy: 0.5829
-![ResNet](README_img/ResNetPredict.png)
+(![ResNet](https://github.com/user-attachments/assets/a8fbc5a3-03aa-4513-9bea-b35fd66135f8))
   
   
 2) 이예진 : MobileNet
